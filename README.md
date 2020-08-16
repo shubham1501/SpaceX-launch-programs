@@ -12,5 +12,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Lighthouse Screenshots
 
-![] (src/lighthouse/lighthouse-report-heroku.PNG)
-![] (src/lighthouse/lighthouse-report-heroku-stats.PNG)
+<image src="https://github.com/shubham1501/SpaceX-launch-programs/blob/master/src/lighthouse/lighthouse-report-heroku.PNG">
+
+<image src="https://github.com/shubham1501/SpaceX-launch-programs/blob/master/src/lighthouse/lighthouse-report-heroku-stats.PNG">
+
