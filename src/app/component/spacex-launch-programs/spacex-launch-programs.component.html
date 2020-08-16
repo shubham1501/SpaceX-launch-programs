@@ -1,0 +1,143 @@
+
+<div class="d-flex flex-column page-backgorund">
+	<h3 class="flex-shrink-1 bg-light border-bottom p-2">
+    SpaceX Launch Programs
+    </h3>
+    <aside class="h-100 filters-mobile" style="flex-basis: 25rem">
+        <section class="h-100 d-flex flex-column bg-light" style="margin: 15%">
+            <h4>Filters</h4>
+            <aside>
+                <div class="d-flex justify-content-center">
+                    <strong class="underline">
+                        Launch Year
+                    </strong>
+                </div>
+                <div class="flex-grow-1 p-3 o-xh o-ya">
+                    <button *ngFor="let year of years" class="filter-button" [ngClass]="{'light-green' : currentFilter.launch_year != year, 'dark-green': currentFilter.launch_year == year}"  (click)="this.filterPrograms({'launch_year': year})">
+                        {{year}}
+                      </button>
+                </div>
+            </aside>
+            <aside>
+                <div class="d-flex justify-content-center">
+                    <strong class="underline">
+                        Successful Launch
+                    </strong>
+                </div>
+                <div class="flex-grow-1 p-3 o-xh o-ya">
+                    <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.launch_success != 'true', 'dark-green': currentFilter.launch_success == 'true'}"  (click)="this.filterPrograms({'launch_success': 'true'})">
+                        true
+                      </button>
+                    <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.launch_success != 'false', 'dark-green': currentFilter.launch_success == 'false'}"  (click)="this.filterPrograms({'launch_success': 'false'})">
+                        false
+                      </button>
+                </div>
+            </aside>
+            <aside>
+                <div class="d-flex justify-content-center">
+                    <strong class="underline">
+                        Successful Landing
+                    </strong>
+                </div>
+                <div class="flex-grow-1 p-3 o-xh o-ya">
+                    <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.land_success != 'true', 'dark-green': currentFilter.land_success == 'true'}"  (click)="this.filterPrograms({'land_success': 'true'})">
+                        true
+                      </button>
+                    <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.land_success != 'false', 'dark-green': currentFilter.land_success == 'false'}"  (click)="this.filterPrograms({'land_success': 'false'})">
+                        false
+                      </button>
+                </div>
+            </aside>
+        </section>
+
+    </aside>
+	<div class="flex-grow-1">
+		<section class="d-flex">
+            <aside class="h-100 filters" style="flex-basis: 25rem">
+				<section class="h-100 d-flex flex-column bg-light" style="margin: 15%">
+                    <h4>Filters</h4>
+					<aside>
+						<div class="d-flex justify-content-center">
+							<strong class="underline">
+                                Launch Year
+							</strong>
+                        </div>
+                        <div class="flex-grow-1 p-3 o-xh o-ya">
+                            <button *ngFor="let year of years" class="filter-button" [ngClass]="{'light-green' : currentFilter.launch_year != year, 'dark-green': currentFilter.launch_year == year}"  (click)="this.filterPrograms({'launch_year': year})">
+                                {{year}}
+                              </button>
+                        </div>
+                    </aside>
+                    <aside>
+						<div class="d-flex justify-content-center">
+							<strong class="underline">
+                                Successful Launch
+							</strong>
+                        </div>
+                        <div class="flex-grow-1 p-3 o-xh o-ya">
+                            <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.launch_success != 'true', 'dark-green': currentFilter.launch_success == 'true'}"  (click)="this.filterPrograms({'launch_success': 'true'})">
+                                true
+                              </button>
+                            <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.launch_success != 'false', 'dark-green': currentFilter.launch_success == 'false'}"  (click)="this.filterPrograms({'launch_success': 'false'})">
+                                false
+                              </button>
+                        </div>
+                    </aside>
+                    <aside>
+						<div class="d-flex justify-content-center">
+							<strong class="underline">
+                                Successful Landing
+							</strong>
+                        </div>
+                        <div class="flex-grow-1 p-3 o-xh o-ya">
+                            <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.land_success != 'true', 'dark-green': currentFilter.land_success == 'true'}"  (click)="this.filterPrograms({'land_success': 'true'})">
+                                true
+                              </button>
+                            <button type="button" class="filter-button" [ngClass]="{'light-green' : currentFilter.land_success != 'false', 'dark-green': currentFilter.land_success == 'false'}"  (click)="this.filterPrograms({'land_success': 'false'})">
+                                false
+                              </button>
+                        </div>
+                    </aside>
+				</section>
+
+			</aside>
+
+            <div class="container">
+                <div class="row">
+                    <section class="wrapperColor">
+                        <div class="container-fostrap">
+                            <div class="content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-3" *ngFor="let program of programs">
+                                            <div class="card">
+                                                <div class="cp_img">
+                                                <img [src]="program.links.mission_patch" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="card-content">
+                                                    <strong class="card-fields" style="color: blue;">{{program.mission_name + ' #' + program.flight_number}}</strong>
+                                                    <strong class="card-fields">Mission Ids:</strong>
+                                                    <ul *ngFor="let id of program.mission_id">
+                                                        <li>{{id}}</li>
+                                                      </ul>
+                                                      <span class="card-fields" *ngIf="!program.mission_id.length"> N/A</span>
+                                                    <strong class="card-fields">Launch Year:  {{program.launch_year}}</strong>
+                                                    <strong class="card-fields">Successful Launch:  {{program.launch_success}}</strong>
+                                                    <strong class="card-fields">Successful Landing:  {{program.launch_failure_details ? 'false' : 'true'}}</strong>                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+		</section>
+    </div>
+    <div style="text-align: center; display: inline;">
+    <strong>Developed by: </strong>
+    <span>Shubham</span>
+    </div>
+</div>
